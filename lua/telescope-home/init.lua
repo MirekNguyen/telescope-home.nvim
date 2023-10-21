@@ -22,7 +22,10 @@ M.find = function()
     prompt_title = "Telescope home",
     cwd = home_directory,
     find_command = { "fd", "-I", "-H", "--ignore-file", ignore_file, "--type", "f"},
-    layout_strategy='vertical',
+    layout_config = {
+      vertical = { width = 0.5 }
+      -- other layout configuration here
+    },
     previewer = false
   })
 end
