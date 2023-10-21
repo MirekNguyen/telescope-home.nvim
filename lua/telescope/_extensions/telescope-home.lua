@@ -7,6 +7,6 @@ return require("telescope").register_extension {
     -- access extension config and user config
   end,
   exports = {
-    telescope-home = require("telescope-home").find
+    telescope_home = require("telescope-home").find
   },
 }
