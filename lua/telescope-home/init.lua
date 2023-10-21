@@ -3,7 +3,6 @@ local M = {
 }
 
 M.default_config = {
-	level = 1,
 }
 
 local builtin = require("telescope.builtin")
@@ -16,13 +15,14 @@ M.config = function(opts)
 end
 
 M.find = function()
-	local level = M.opts.level
-	local current_buffer_directory = vim.fn.expand("%:h")
+	local home_directory = vim.fn.expand("$HOME")
 
 	builtin.find_files({
 		prompt_title = "Telescope home",
-		cwd = current_buffer_directory,
-		find_command = { "find", ".", "-maxdepth", tostring(level), "-type", "f" },
+		cwd = home_directory,
+    find_command = { "fd", "-I", "-H", "--ignore-file", ignore_file, "--type", "f"},
+    layout_strategy='vertical',
+    previewer = false
 	})
 end
 
