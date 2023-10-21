@@ -23,7 +23,10 @@ M.find = function()
     cwd = home_directory,
     find_command = { "fd", "-I", "-H", "--ignore-file", ignore_file, "--type", "f"},
     layout_config = {
-      vertical = { width = 0.5 }
+      vertical = { 
+        width = 0.5,
+        height = 0.5
+      }
       -- other layout configuration here
     },
     previewer = false
