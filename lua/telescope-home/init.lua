@@ -1,5 +1,5 @@
 local M = {
-	opts =  {}
+  opts =  {}
 }
 
 M.default_config = {
@@ -11,19 +11,20 @@ M.setup = function(opts)
 end
 
 M.config = function(opts)
-	M.opts = vim.tbl_deep_extend("force", default_config, opts)
+  M.opts = vim.tbl_deep_extend("force", default_config, opts)
 end
 
 M.find = function()
-	local home_directory = vim.fn.expand("$HOME")
+  local home_directory = vim.fn.expand("$HOME")
+  local ignore_file = vim.fn.expand("$HOME/.config/dotfiles/config/fdignore")
 
-	builtin.find_files({
-		prompt_title = "Telescope home",
-		cwd = home_directory,
+  builtin.find_files({
+    prompt_title = "Telescope home",
+    cwd = home_directory,
     find_command = { "fd", "-I", "-H", "--ignore-file", ignore_file, "--type", "f"},
     layout_strategy='vertical',
     previewer = false
-	})
+  })
 end
 
 return M
