@@ -3,7 +3,7 @@ local M = {
 }
 
 M.default_config = {
-  dir = "$HOME",
+  search_dir = "$HOME",
   previewer = false,
   hidden = true,
   gitignore = true
@@ -19,7 +19,6 @@ M.config = function(opts)
 end
 
 M.find = function()
-  local home_directory = vim.fn.expand("$HOME")
   local ignore_file = vim.fn.expand("$HOME/.config/dotfiles/config/fdignore")
   if M.opts.ignore_file then
     find_command = { "fd", "--ignore-file", ignore_file, "--type", "f"}
@@ -35,7 +34,7 @@ M.find = function()
 
 
   builtin.find_files({
-    prompt_title = "Telescope home",
+    prompt_title = "Telescope path",
     cwd = M.opts.dir,
     find_command = find_command,
     previewer = M.opts.previewer
