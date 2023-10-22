@@ -35,7 +35,7 @@ M.find = function()
 
   builtin.find_files({
     prompt_title = "Telescope path",
-    cwd = M.opts.dir,
+    cwd = vim.fn.expand(M.opts.search_dir),
     find_command = find_command,
     previewer = M.opts.previewer
   })
